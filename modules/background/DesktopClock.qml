@@ -4,12 +4,6 @@ import qs.config
 import QtQuick
 
 Item {
-
-    // read offsets from shell.json
-    // property int offsetX: Config.background.desktopClock.offsetX || 0
-    // property int offsetY: Config.background.desktopClock.offsetY || 0
-
-
     StyledText {
         id: timeText
         
@@ -30,7 +24,7 @@ Item {
         anchors.left: timeText.left
         anchors.topMargin: 10
 
-        text: Time.format("dddd, MMMM d")  // Saturday, September 13
+        text: Time.format("dddd, MMMM d")
 
         font.pointSize: Appearance.font.size.extraLarge * 1.2
         font.letterSpacing: 2
