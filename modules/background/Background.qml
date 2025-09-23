@@ -60,9 +60,6 @@ Loader {
                 }
             }
 
-            mask: Region {}
-
-
             Loader {
                 anchors.fill: parent
 
