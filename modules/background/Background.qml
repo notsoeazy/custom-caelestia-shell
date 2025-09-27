@@ -60,20 +60,9 @@ Loader {
                 }
             }
 
-            Loader {
+           Loader {
+                id: clockLoader
                 anchors.fill: parent
-
-                anchors.right: parent.right
-                anchors.bottom: parent.bottom
-                anchors.margins: Appearance.padding.large
-
-                // Add way to manually set the position in DesktopClock.qml
-                anchors.topMargin: Config.border.thickness + Appearance.spacing.large
-                    + 80 // Temporary fix
-                anchors.leftMargin: Visibilities.bars.get(win.modelData).exclusiveZone * 1.2
-                    + Config.border.thickness
-                    + Appearance.spacing.large
-                    + 100 // Temporary fix
 
                 active: Config.background.desktopClock.enabled
                 asynchronous: true
