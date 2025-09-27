@@ -4,12 +4,6 @@ import qs.config
 import QtQuick
 
 Item {
-
-    // read offsets from shell.json
-    // property int offsetX: Config.background.desktopClock.offsetX || 0
-    // property int offsetY: Config.background.desktopClock.offsetY || 0
-
-
     StyledText {
         id: timeText
         
