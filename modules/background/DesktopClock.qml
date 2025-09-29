@@ -4,6 +4,7 @@ import qs.config
 import QtQuick
 
 Item {
+<<<<<<< HEAD
     id: clockRoot
 
     // configurable position with defaults
@@ -32,6 +33,10 @@ Item {
         cursorShape: Qt.OpenHandCursor
         hoverEnabled: true
         acceptedButtons: Qt.LeftButton
+=======
+    StyledText {
+        id: timeText
+>>>>>>> main
         
         onPressed: cursorShape = Qt.ClosedHandCursor
         onReleased: {
