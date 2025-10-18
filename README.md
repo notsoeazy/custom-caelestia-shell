@@ -588,7 +588,20 @@ default, you must create it manually.
             "configLoaded": true,
             "dndChanged": true,
             "gameModeChanged": true,
-            "numLockChanged": true
+            "kbLayoutChanged": true,
+            "numLockChanged": true,
+            "vpnChanged": true,
+            "nowPlaying": false
+        },
+        "vpn": {
+            "enabled": false,
+            "provider": [
+                {
+                    "name": "wireguard",
+                    "interface": "your-connection-name",
+                    "displayName": "Wireguard (Your VPN)"
+                }
+            ]
         }
     }
 }
