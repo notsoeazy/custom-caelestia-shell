@@ -46,7 +46,11 @@ Item {
     TextMetrics {
         id: metrics
 
-        text: Hypr.activeToplevel?.title ?? qsTr("Desktop")
+        text: {
+            const title = Hypr.activeToplevel?.title ?? qsTr("Desktop");
+            const parts = title.split(" - ");
+            return parts.length > 1 ? parts[parts.length - 1] : title;
+        }
         font.pointSize: Appearance.font.size.smaller
         font.family: Appearance.font.family.mono
         elide: Qt.ElideRight
