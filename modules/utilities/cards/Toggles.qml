@@ -13,6 +13,7 @@ StyledRect {
 
     required property var visibilities
     required property Item popouts
+    property bool additionalToggles: !VPN.enabled && !NightLight.enabled
 
     Layout.fillWidth: true
     implicitHeight: layout.implicitHeight + Appearance.padding.large * 2
@@ -32,9 +33,11 @@ StyledRect {
             font.pointSize: Appearance.font.size.normal
         }
 
-        RowLayout {
+        GridLayout {
             Layout.alignment: Qt.AlignHCenter
-            spacing: Appearance.spacing.small
+            columns: 4
+            rowSpacing: Appearance.spacing.small
+            columnSpacing: Appearance.spacing.small
 
             Toggle {
                 icon: "wifi"
@@ -75,6 +78,26 @@ StyledRect {
             Toggle {
                 icon: "gamepad"
                 checked: GameMode.enabled
+                visible: root.additionalToggles
+                onClicked: GameMode.enabled = !GameMode.enabled
+            }
+
+            Toggle {
+                icon: "notifications_off"
+                checked: Notifs.dnd
+                visible: root.additionalToggles
+                onClicked: Notifs.dnd = !Notifs.dnd
+            }
+        }
+
+        RowLayout {
+            Layout.alignment: Qt.AlignHCenter
+            spacing: Appearance.spacing.small
+            visible: VPN.enabled || NightLight.enabled
+
+            Toggle {
+                icon: "gamepad"
+                checked: GameMode.enabled
                 onClicked: GameMode.enabled = !GameMode.enabled
             }
 
@@ -92,6 +115,12 @@ StyledRect {
                 onClicked: VPN.toggle()
             }
 
+            Toggle {
+                icon: "dark_mode"
+                checked: NightLight.on
+                visible: NightLight.enabled
+                onClicked: NightLight.toggle()
+            }
         }
     }
 

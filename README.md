@@ -629,7 +629,8 @@ default, you must create it manually.
             "kbLimit": true,
             "numLockChanged": true,
             "vpnChanged": true,
-            "nowPlaying": false
+            "nowPlaying": false,
+            "nightLight": true
         },
         "vpn": {
             "enabled": true,
@@ -641,6 +642,10 @@ default, you must create it manually.
                     "enabled": false
                 }
             ]
+        },
+        "nightLight": {
+            "enabled": false,
+            "temperature": 4500
         }
     }
 }
