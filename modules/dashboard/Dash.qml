@@ -39,7 +39,7 @@ GridLayout {
         Layout.preferredWidth: Config.dashboard.sizes.weatherWidth
         Layout.fillHeight: true
 
-        radius: Appearance.rounding.large * 1.5
+        radius: Appearance.rounding.large
 
         Weather {}
     }
@@ -49,7 +49,7 @@ GridLayout {
         Layout.preferredWidth: dateTime.implicitWidth
         Layout.fillHeight: true
 
-        radius: Appearance.rounding.normal
+        radius: Appearance.rounding.large
 
         DateTime {
             id: dateTime
@@ -78,7 +78,7 @@ GridLayout {
         Layout.preferredWidth: resources.implicitWidth
         Layout.fillHeight: true
 
-        radius: Appearance.rounding.normal
+        radius: Appearance.rounding.large
 
         Resources {
             id: resources
@@ -92,7 +92,7 @@ GridLayout {
         Layout.preferredWidth: media.implicitWidth
         Layout.fillHeight: true
 
-        radius: Appearance.rounding.large * 2
+        radius: Appearance.rounding.large
 
         Media {
             id: media

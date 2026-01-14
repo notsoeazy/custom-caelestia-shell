@@ -69,7 +69,7 @@ Item {
             Layout.fillWidth: true
             implicitHeight: bigInfoRow.implicitHeight + Appearance.padding.small * 2
 
-            radius: Appearance.rounding.large * 2
+            radius: Appearance.rounding.large
             color: Colours.tPalette.m3surfaceContainer
 
             RowLayout {
@@ -214,7 +214,7 @@ Item {
 
         Layout.fillWidth: true
         Layout.preferredHeight: 60
-        radius: Appearance.rounding.small
+        radius: Appearance.rounding.normal
         color: Colours.tPalette.m3surfaceContainer
 
         Row {
