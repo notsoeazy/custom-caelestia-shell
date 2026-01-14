@@ -46,8 +46,18 @@ Item {
     TextMetrics {
         id: metrics
 
-        text: Hypr.activeToplevel?.title ?? qsTr("Desktop")
-        font.pointSize: Appearance.font.size.smaller
+        text: {
+            const title = Hypr.activeToplevel?.title ?? qsTr("Desktop");
+            
+            if (Config.bar.activeWindow.shorten) {
+                const parts = title.split(" - ");
+                return parts.length > 1 ? parts[parts.length - 1] : title;
+            }
+
+            return title || qsTr("Desktop");
+        }      
+
+        font.pointSize: Appearance.font.size.small
         font.family: Appearance.font.family.mono
         elide: Qt.ElideRight
         elideWidth: root.maxHeight - icon.height

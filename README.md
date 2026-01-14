@@ -418,7 +418,8 @@ default, you must create it manually.
         },
         "excludedScreens": [""],
         "activeWindow": {
-            "inverted": false
+            "inverted": false,
+            "shorten": true
         }
     },
     "border": {
