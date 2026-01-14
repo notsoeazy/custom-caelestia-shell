@@ -329,7 +329,9 @@ default, you must create it manually.
     },
     "bar": {
         "clock": {
-            "showIcon": true
+            "showIcon": true,
+            "background": true,
+            "inverted": false
         },
         "dragThreshold": 20,
         "entries": [

@@ -4,35 +4,47 @@ import qs.components
 import qs.services
 import qs.config
 import QtQuick
+import QtQuick.Layouts
 
-Column {
+StyledRect {
     id: root
 
-    property color colour: Colours.palette.m3tertiary
+    readonly property color colour: Colours.palette.m3primary
+    readonly property int padding: Config.bar.clock.background ? Appearance.padding.normal : Appearance.padding.small
 
-    spacing: Appearance.spacing.small
+    // Format: [00:00 PM • Thu Jan 8]
+    readonly property string timeStr: Time.format(Config.services.useTwelveHourClock ? "hh:mm A" : "HH:mm")
+    readonly property string dateStr: Time.format("ddd MMM d")
+    readonly property string fullText: `${timeStr} • ${dateStr}`
 
-    Loader {
-        anchors.horizontalCenter: parent.horizontalCenter
+    implicitWidth: Config.bar.sizes.innerWidth
+    // * 3 for extra padding on top and bottom
+    implicitHeight: layout.implicitWidth + padding * 3 
 
-        active: Config.bar.clock.showIcon
-        visible: active
+    color: Config.bar.clock.background ? Colours.tPalette.m3surfaceContainer : "transparent"
+    radius: Appearance.rounding.full
 
-        sourceComponent: MaterialIcon {
-            text: "calendar_month"
+    RowLayout {
+        id: layout
+        anchors.centerIn: parent
+        spacing: Appearance.spacing.small
+        
+        rotation: Config.bar.clock.inverted ? 270 : 90
+
+        MaterialIcon {
+            id: icon
+            text: "schedule"
             color: root.colour
+            visible: Config.bar.clock.showIcon
         }
-    }
 
-    StyledText {
-        id: text
-
-        anchors.horizontalCenter: parent.horizontalCenter
-
-        horizontalAlignment: StyledText.AlignHCenter
-        text: Time.format(Config.services.useTwelveHourClock ? "hh\nmm\nA" : "hh\nmm")
-        font.pointSize: Appearance.font.size.smaller
-        font.family: Appearance.font.family.mono
-        color: root.colour
+        StyledText {
+            id: clockText
+            text: root.fullText
+            font.pointSize: Appearance.font.size.small
+            font.family: Appearance.font.family.mono
+            color: root.colour
+            wrapMode: Text.NoWrap
+        }
     }
 }

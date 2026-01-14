@@ -4,6 +4,7 @@ JsonObject {
     property bool persistent: true
     property bool showOnHover: true
     property int dragThreshold: 20
+    property bool floating: false
     property ScrollActions scrollActions: ScrollActions {}
     property Popouts popouts: Popouts {}
     property Workspaces workspaces: Workspaces {}
@@ -82,6 +83,7 @@ JsonObject {
 
     component ActiveWindow: JsonObject {
         property bool inverted: false
+        property bool shorten: false
     }
 
     component Tray: JsonObject {
@@ -104,6 +106,8 @@ JsonObject {
 
     component Clock: JsonObject {
         property bool showIcon: true
+        property bool background: true
+        property bool inverted: false
     }
 
     component Sizes: JsonObject {
