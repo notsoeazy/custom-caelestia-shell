@@ -420,6 +420,12 @@ default, you must create it manually.
         "activeWindow": {
             "inverted": false,
             "shorten": true
+        },
+        "osIcon": {
+            "background": true
+        },
+        "power": {
+            "background": true
         }
     },
     "border": {

@@ -14,6 +14,8 @@ JsonObject {
     property Clock clock: Clock {}
     property Sizes sizes: Sizes {}
     property list<string> excludedScreens: []
+    property OsIcon osIcon: OsIcon {}
+    property Power power: Power {}
 
     property list<var> entries: [
         {
@@ -117,5 +119,13 @@ JsonObject {
         property int batteryWidth: 250
         property int networkWidth: 320
         property int kbLayoutWidth: 320
+    }
+
+    component OsIcon: JsonObject {
+        property bool background: false
+    }
+
+    component Power: JsonObject {
+        property bool background: false
     }
 }
