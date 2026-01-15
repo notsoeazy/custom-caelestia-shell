@@ -73,7 +73,11 @@ Item {
 
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-        anchors.right: parent.right
+        anchors.right: !Config.bar.floating ? parent.right : undefined
+        anchors.left: Config.bar.floating ? parent.left : undefined
+        anchors.margins: Config.bar.floating ? Appearance.spacing.small : 0
+        anchors.topMargin: 0 
+        anchors.bottomMargin: 0 
 
         active: root.shouldBeVisible || root.visible
 
