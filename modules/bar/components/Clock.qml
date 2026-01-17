@@ -27,7 +27,7 @@ StyledRect {
     RowLayout {
         id: layout
         anchors.centerIn: parent
-        spacing: Appearance.spacing.small
+        spacing: Appearance.spacing.smaller
         
         rotation: Config.bar.clock.inverted ? 270 : 90
 
@@ -41,7 +41,7 @@ StyledRect {
         StyledText {
             id: clockText
             text: root.fullText
-            font.pointSize: Appearance.font.size.small
+            font.pointSize: Appearance.font.size.smaller
             font.family: Appearance.font.family.mono
             color: root.colour
             wrapMode: Text.NoWrap
