@@ -33,11 +33,9 @@ StyledRect {
             font.pointSize: Appearance.font.size.normal
         }
 
-        GridLayout {
+        RowLayout {
             Layout.alignment: Qt.AlignHCenter
-            columns: 4
-            rowSpacing: Appearance.spacing.small
-            columnSpacing: Appearance.spacing.small
+            spacing: Appearance.spacing.small
 
             Toggle {
                 icon: "wifi"
