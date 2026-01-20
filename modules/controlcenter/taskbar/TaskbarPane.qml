@@ -45,6 +45,8 @@ Item {
     property bool popoutActiveWindow: Config.bar.popouts.activeWindow ?? true
     property bool popoutTray: Config.bar.popouts.tray ?? true
     property bool popoutStatusIcons: Config.bar.popouts.statusIcons ?? true
+    property bool activeWindowInverted: Config.bar.activeWindow.inverted ?? false
+    property bool activeWindowShorten: Config.bar.activeWindow.shorten ?? false
 
     anchors.fill: parent
 
@@ -88,6 +90,8 @@ Item {
         Config.bar.popouts.activeWindow = root.popoutActiveWindow;
         Config.bar.popouts.tray = root.popoutTray;
         Config.bar.popouts.statusIcons = root.popoutStatusIcons;
+        Config.bar.activeWindow.inverted = activeWindowInverted;
+        Config.bar.activeWindow.shorten = activeWindowShorten;
 
         const entries = [];
         for (let i = 0; i < entriesModel.count; i++) {
@@ -489,25 +493,6 @@ Item {
                             alignTop: true
 
                             StyledText {
-                                text: qsTr("Clock")
-                                font.pointSize: Appearance.font.size.normal
-                            }
-
-                            SwitchRow {
-                                label: qsTr("Show clock icon")
-                                checked: root.clockShowIcon
-                                onToggled: checked => {
-                                    root.clockShowIcon = checked;
-                                    root.saveConfig();
-                                }
-                            }
-                        }
-
-                        SectionContainer {
-                            Layout.fillWidth: true
-                            alignTop: true
-
-                            StyledText {
                                 text: qsTr("Bar Behavior")
                                 font.pointSize: Appearance.font.size.normal
                             }
@@ -552,6 +537,34 @@ Item {
                                         root.dragThreshold = Math.round(newValue);
                                         root.saveConfig();
                                     }
+                                }
+                            }
+                        }
+
+                        SectionContainer {
+                            Layout.fillWidth: true
+                            alignTop: true
+
+                            StyledText {
+                                text: qsTr("Active Window")
+                                font.pointSize: Appearance.font.size.normal
+                            }
+
+                            SwitchRow {
+                                label: qsTr("Inverted")
+                                checked: root.activeWindowInverted
+                                onToggled: checked => {
+                                    root.activeWindowInverted = checked;
+                                    root.saveConfig();
+                                }
+                            }
+
+                            SwitchRow {
+                                label: qsTr("Shorten")
+                                checked: root.activeWindowShorten
+                                onToggled: checked => {
+                                    root.activeWindowShorten = checked;
+                                    root.saveConfig();
                                 }
                             }
                         }
@@ -638,6 +651,25 @@ Item {
                                         }
                                     }
                                 ]
+                            }
+                        }
+
+                        SectionContainer {
+                            Layout.fillWidth: true
+                            alignTop: true
+
+                            StyledText {
+                                text: qsTr("Clock")
+                                font.pointSize: Appearance.font.size.normal
+                            }
+
+                            SwitchRow {
+                                label: qsTr("Show clock icon")
+                                checked: root.clockShowIcon
+                                onToggled: checked => {
+                                    root.clockShowIcon = checked;
+                                    root.saveConfig();
+                                }
                             }
                         }
                     }
