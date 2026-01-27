@@ -402,11 +402,16 @@ Singleton {
                 numLockChanged: utilities.toasts.numLockChanged,
                 kbLayoutChanged: utilities.toasts.kbLayoutChanged,
                 vpnChanged: utilities.toasts.vpnChanged,
-                nowPlaying: utilities.toasts.nowPlaying
+                nowPlaying: utilities.toasts.nowPlaying,
+                nightLight: utilities.toasts.nightLight
             },
             vpn: {
                 enabled: utilities.vpn.enabled,
                 provider: utilities.vpn.provider
+            },
+            nightLight: {
+                enabled: utilities.nightLight.enabled,
+                temperature: utilities.nightLight.temperature
             }
         };
     }
