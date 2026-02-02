@@ -82,6 +82,7 @@ JsonObject {
 
     component ActiveWindow: JsonObject {
         property bool inverted: false
+        property bool shorten: true
     }
 
     component Tray: JsonObject {
@@ -104,6 +105,8 @@ JsonObject {
 
     component Clock: JsonObject {
         property bool showIcon: true
+        property bool background: true
+        property bool inverted: false
     }
 
     component Sizes: JsonObject {
