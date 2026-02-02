@@ -4,7 +4,6 @@ JsonObject {
     property bool persistent: true
     property bool showOnHover: true
     property int dragThreshold: 20
-    property bool floating: false
     property ScrollActions scrollActions: ScrollActions {}
     property Popouts popouts: Popouts {}
     property Workspaces workspaces: Workspaces {}
@@ -14,8 +13,6 @@ JsonObject {
     property Clock clock: Clock {}
     property Sizes sizes: Sizes {}
     property list<string> excludedScreens: []
-    property OsIcon osIcon: OsIcon {}
-    property Power power: Power {}
 
     property list<var> entries: [
         {
@@ -85,8 +82,6 @@ JsonObject {
 
     component ActiveWindow: JsonObject {
         property bool inverted: false
-        property bool shorten: true
-        property bool fillSpace: false
     }
 
     component Tray: JsonObject {
@@ -109,8 +104,6 @@ JsonObject {
 
     component Clock: JsonObject {
         property bool showIcon: true
-        property bool background: true
-        property bool inverted: false
     }
 
     component Sizes: JsonObject {
@@ -120,13 +113,5 @@ JsonObject {
         property int batteryWidth: 250
         property int networkWidth: 320
         property int kbLayoutWidth: 320
-    }
-
-    component OsIcon: JsonObject {
-        property bool background: false
-    }
-
-    component Power: JsonObject {
-        property bool background: false
     }
 }
