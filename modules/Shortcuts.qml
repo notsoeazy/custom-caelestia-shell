@@ -69,6 +69,31 @@ Scope {
         onPressed: root.launcherInterrupted = true
     }
 
+    CustomShortcut {
+        name: "cycleSpecialWorkspace"
+        description: "Cycle through open special workspaces"
+        onPressed: {
+            const openSpecials = Hypr.workspaces.values
+                .filter(w => w.name.startsWith("special:") && w.lastIpcObject.windows > 0)
+                .sort((a, b) => a.name.localeCompare(b.name));
+
+            if (openSpecials.length === 0)
+                return;
+
+            const activeSpecial = Hypr.focusedMonitor.lastIpcObject.specialWorkspace.name ?? "";
+            let nextIndex = 0;
+
+            if (activeSpecial) {
+                const currentIndex = openSpecials.findIndex(w => w.name === activeSpecial);
+                if (currentIndex !== -1) {
+                    nextIndex = (currentIndex + 1) % openSpecials.length;
+                }
+            }
+
+            Hypr.dispatch(`workspace ${openSpecials[nextIndex].name}`);
+        }
+    }
+
     IpcHandler {
         target: "drawers"
 
@@ -114,6 +139,42 @@ Scope {
 
         function error(title: string, message: string, icon: string): void {
             Toaster.toast(title, message, icon, Toast.Error);
+        }
+    }
+
+    IpcHandler {
+        target: "specialWorkspace"
+
+        function cycle(direction: string): void {
+            const openSpecials = Hypr.workspaces.values
+                .filter(w => w.name.startsWith("special:") && w.lastIpcObject.windows > 0);
+
+            if (openSpecials.length === 0)
+                return;
+
+            const activeSpecial = Hypr.focusedMonitor.lastIpcObject.specialWorkspace.name ?? "";
+            let nextIndex = 0;
+
+            if (activeSpecial) {
+                const currentIndex = openSpecials.findIndex(w => w.name === activeSpecial);
+                if (currentIndex !== -1) {
+                    if (direction === "next")
+                        nextIndex = (currentIndex + 1) % openSpecials.length;
+                    else
+                        nextIndex = (currentIndex - 1 + openSpecials.length) % openSpecials.length;
+                }
+            } else if (direction === "prev") {
+                nextIndex = openSpecials.length - 1;
+            }
+
+            Hypr.dispatch(`workspace ${openSpecials[nextIndex].name}`);
+        }
+
+        function list(): string {
+            return Hypr.workspaces.values
+                .filter(w => w.name.startsWith("special:") && w.lastIpcObject.windows > 0)
+                .map(w => w.name)
+                .join("\n");
         }
     }
 }
