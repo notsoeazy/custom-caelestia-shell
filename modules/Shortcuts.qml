@@ -4,6 +4,7 @@ import qs.services
 import Caelestia
 import Quickshell
 import Quickshell.Io
+import QtQuick
 
 Scope {
     id: root
@@ -142,6 +143,20 @@ Scope {
         }
     }
 
+    property string lastSpecialWorkspace: ""
+
+    Connections {
+        target: Hypr.focusedMonitor
+
+        function onLastIpcObjectChanged(): void {
+            const specialName = Hypr.focusedMonitor.lastIpcObject.specialWorkspace.name;
+            
+            if (specialName && specialName.startsWith("special:")) {
+                root.lastSpecialWorkspace = specialName;
+            }
+        }
+    }
+
     IpcHandler {
         target: "specialWorkspace"
 
@@ -153,18 +168,29 @@ Scope {
                 return;
 
             const activeSpecial = Hypr.focusedMonitor.lastIpcObject.specialWorkspace.name ?? "";
-            let nextIndex = 0;
-
-            if (activeSpecial) {
-                const currentIndex = openSpecials.findIndex(w => w.name === activeSpecial);
-                if (currentIndex !== -1) {
-                    if (direction === "next")
-                        nextIndex = (currentIndex + 1) % openSpecials.length;
-                    else
-                        nextIndex = (currentIndex - 1 + openSpecials.length) % openSpecials.length;
+            
+            // If no special workspace is active, reopen the last one
+            if (!activeSpecial) {
+                if (root.lastSpecialWorkspace) {
+                    const workspace = Hypr.workspaces.values.find(w => w.name === root.lastSpecialWorkspace);
+                    if (workspace && workspace.lastIpcObject.windows > 0) {
+                        Hypr.dispatch(`workspace ${root.lastSpecialWorkspace}`);
+                        return;
+                    }
                 }
-            } else if (direction === "prev") {
-                nextIndex = openSpecials.length - 1;
+                // Fallback to first open special workspace
+                Hypr.dispatch(`workspace ${openSpecials[0].name}`);
+                return;
+            }
+
+            const currentIndex = openSpecials.findIndex(w => w.name === activeSpecial);
+            let nextIndex = 0;
+            
+            if (currentIndex !== -1) {
+                if (direction === "next")
+                    nextIndex = (currentIndex + 1) % openSpecials.length;
+                else
+                    nextIndex = (currentIndex - 1 + openSpecials.length) % openSpecials.length;
             }
 
             Hypr.dispatch(`workspace ${openSpecials[nextIndex].name}`);
