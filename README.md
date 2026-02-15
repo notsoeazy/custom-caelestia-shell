@@ -644,32 +644,32 @@ default, you must create it manually.
         },
         "quickToggles": [
             {
-                "enabled": true,
-                "id": "wifi"
+                "id": "wifi",
+                "enabled": true
             },
             {
-                "enabled": true,
-                "id": "bluetooth"
+                "id": "bluetooth",
+                "enabled": true
             },
             {
-                "enabled": true,
-                "id": "mic"
-            },
-            {
-                "enabled": true,
-                "id": "gameMode"
-            },
-            {
-                "enabled": true,
-                "id": "dnd"
+                "id": "mic",
+                "enabled": true
             },
             {
                 "enabled": true,
                 "id": "settings"
             },
             {
-                "enabled": true,
-                "id": "vpn"
+                "id": "gameMode",
+                "enabled": true
+            },
+            {
+                "id": "dnd",
+                "enabled": true
+            },
+            {
+                "id": "vpn",
+                "enabled": true
             }
         ]
     }
