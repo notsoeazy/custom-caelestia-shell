@@ -35,7 +35,7 @@ StyledRect {
             return true;
         });
     }
-    readonly property int splitIndex: quickToggles.length === 7 ? 4 : Math.ceil(quickToggles.length / 2)
+    readonly property int splitIndex: Math.ceil(quickToggles.length / 2)
     readonly property bool needExtraRow: quickToggles.length > 6
 
     Layout.fillWidth: true
