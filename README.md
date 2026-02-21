@@ -426,11 +426,33 @@ default, you must create it manually.
         "rounding": 25,
         "thickness": 10
     },
-    "dashboard": {
-        "enabled": true,
-        "dragThreshold": 50,
-        "mediaUpdateInterval": 500,
-        "showOnHover": true
+	"dashboard": {
+    	"enabled": true,
+    	"showOnHover": true,
+    	"dragThreshold": 50,
+    	"performance": {
+      		"showBattery": true,
+      		"showGpu": true,
+      		"showCpu": true,
+      		"showMemory": true,
+      		"showStorage": true,
+      		"showNetwork": true
+    	},
+    	"sizes": {
+      		"tabIndicatorHeight": 3,
+      		"tabIndicatorSpacing": 5,
+      		"infoWidth": 200,
+      		"infoIconSize": 25,
+      		"dateTimeWidth": 110,
+      		"mediaWidth": 200,
+      		"mediaProgressSweep": 180,
+      		"mediaProgressThickness": 8,
+			"resourceProgessThickness": 10,
+      		"weatherWidth": 250,
+      		"mediaCoverArtSize": 150,
+      		"mediaVisualiserSize": 80,
+      		"resourceSize": 200
+    	}
     },
     "launcher": {
         "actionPrefix": ">",
