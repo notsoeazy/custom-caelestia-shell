@@ -301,7 +301,8 @@ default, you must create it manually.
                     "idleAction": ["systemctl", "suspend-then-hibernate"]
                 }
             ]
-        }
+        },
+		"logo": ""
     },
     "background": {
         "desktopClock": {
@@ -404,11 +405,13 @@ default, you must create it manually.
             "activeIndicator": true,
             "activeLabel": "󰮯",
             "activeTrail": false,
+			"capitalisation": "preserve",
             "label": "  ",
             "occupiedBg": false,
             "occupiedLabel": "󰮯",
             "perMonitorWorkspaces": true,
             "showWindows": true,
+			"showWindowsOnSpecialWorkspaces": true,
             "shown": 5,
             "specialWorkspaceIcons": [
                 {
@@ -584,25 +587,48 @@ default, you must create it manually.
             "wallpapers": false
         },
         "showOnHover": false,
+		"sizes": {
+			"itemWidth": 600,
+			"itemHeight": 57,
+			"wallpaperWidth": 280,
+			"wallpaperHeight": 200
+		},
         "favouriteApps": [],
         "hiddenApps": []
     },
     "lock": {
+    	"enableFprint": true,
+    	"maxFprintTries": 3,
         "recolourLogo": false
+        "sizes": {
+          "heightMult": 0.7,
+          "ratio": 1.7777777777777777,
+          "centerWidth": 600
+        }
     },
     "notifs": {
         "actionOnClick": false,
         "clearThreshold": 0.3,
         "defaultExpireTimeout": 5000,
         "expandThreshold": 20,
+        "expire": false,
+        "groupPreviewNum": 3,
         "openExpanded": false,
-        "expire": false
+        "sizes": {
+          "width": 400,
+          "image": 41,
+          "badge": 20
+        }
     },
     "osd": {
         "enabled": true,
         "enableBrightness": true,
         "enableMicrophone": false,
-        "hideDelay": 2000
+        "hideDelay": 2000,
+        "sizes": {
+          "sliderWidth": 30,
+          "sliderHeight": 150
+        }
     },
     "paths": {
         "mediaGif": "root:/assets/bongocat.gif",
@@ -642,7 +668,10 @@ default, you must create it manually.
     },
     "sidebar": {
         "dragThreshold": 80,
-        "enabled": true
+        "enabled": true,
+    	"sizes": {
+      		"width": 430
+    	}
     },
     "utilities": {
         "enabled": true,
